@@ -10,8 +10,8 @@
 <div class="links">
   <% @links.each do |link| %>
     <% case link.first %>
-      <% when 2 then popular, link = "Hot", link.last %>
-      <% when 1 then popular, link = "Top Link", link.last %>
+      <% when 1 then popular, link = "Hot", link.last %>
+      <% when 2 then popular, link = "Top Link", link.last %>
       <% else popular, link = "", link.last %>
     <% end %>
     <%= render partial: "link", :locals => {link: link, popular: popular} %>

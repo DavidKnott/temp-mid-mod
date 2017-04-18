@@ -14,8 +14,8 @@ class Link < ActiveRecord::Base
     top_link = hot_links.shift
     links = current_user.reload.links.reverse.map do |link|
       a = [0, link] 
-      a = [2, link] if link.url == top_link
       a = [1, link] if hot_links.include?(link.url)
+      a = [2, link] if link.url == top_link
       a
     end
     order_by_popularity(links)
