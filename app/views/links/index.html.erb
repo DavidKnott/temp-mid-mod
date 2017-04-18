@@ -9,6 +9,11 @@
 <%= button_tag "Only Read Links", class:"filter-by-read" %>
 <div class="links">
   <% @links.each do |link| %>
-    <%= render partial: "link", :locals => {link: link} %>
+    <% case link.first %>
+      <% when 2 then popular, link = "Hot", link.last %>
+      <% when 1 then popular, link = "Top Link", link.last %>
+      <% else popular, link = "", link.last %>
+    <% end %>
+    <%= render partial: "link", :locals => {link: link, popular: popular} %>
   <% end %>
 </div>

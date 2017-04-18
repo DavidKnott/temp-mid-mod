@@ -11,7 +11,7 @@ class Api::V1::LinksController < ApplicationController
   def create
     link = current_user.links.create(link_params)
     if link.save
-      render partial: 'links/link', locals: {link: link}, layout: false, status: 201
+      render partial: 'links/link', locals: {link: link, popular: ""}, layout: false, status: 201
     end
   end
 

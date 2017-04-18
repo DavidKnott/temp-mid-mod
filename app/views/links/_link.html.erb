@@ -1,4 +1,9 @@
 <div class='link panel panel-default'>
+  <% if link.read == false %>
+    <h3 class="hidden popular"><%= popular %></h3>
+  <% else %>
+    <h3 class="popular"><%= popular %></h3>
+  <% end %>
   <h3>Title: <%= link.title%></h3>
   <h3>URL: <%= link.url%></h3>
 

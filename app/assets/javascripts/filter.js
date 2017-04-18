@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  bindFilterByTestListenerToFilterByText()
+  bindFilterByTextListenerToFilterByText()
   bindFilterByReadListenerToFilterByRead()
   bindFilterByUnreadListenerToFilterByUnread()
 })
@@ -14,7 +14,7 @@ function bindFilterByUnreadListenerToFilterByUnread(){
 }
 
 function filterByUnread(link){
-  if ($(link).children()[2].innerText.split(' ')[1] == "true") $(link).removeClass("hidden");
+  if ($(link).children()[3].innerText.split(' ')[1] == "false") $(link).removeClass("hidden");
   else $(link).addClass("hidden");
 }
 
@@ -28,13 +28,13 @@ function bindFilterByReadListenerToFilterByRead(){
 }
 
 function filterByRead(link){
-  if ($(link).children()[2].innerText.split(' ')[1] == "false") $(link).removeClass("hidden");
+  if ($(link).children()[3].innerText.split(' ')[1] == "true") $(link).removeClass("hidden");
   else $(link).addClass("hidden");
 }
 
-function bindFilterByTestListenerToFilterByText() {
+function bindFilterByTextListenerToFilterByText() {
   $(".filter-by-text").on("keyup", function(event){
-    const links = $(".link")
+    const links = $(".links").children()
     const text = $(this).val().toLowerCase()
     for(let i = 0; i < links.length; i++){
       filterByText(links[i], text)
@@ -43,8 +43,8 @@ function bindFilterByTestListenerToFilterByText() {
 }
 
 function filterByText(link, text){
-  let title = $(link).children()[0].innerText.split(' ')[1].toLowerCase();
-  let url = $(link).children()[1].innerText.split(' ')[1].toLowerCase();
+  let title = $(link).children()[1].innerText.split(' ')[1].toLowerCase();
+  let url = $(link).children()[2].innerText.split(' ')[1].toLowerCase();
   if (title.includes(text) || url.includes(text)) $(link).removeClass("hidden");
   else $(link).addClass("hidden");
 }

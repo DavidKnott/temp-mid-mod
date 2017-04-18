@@ -16,7 +16,7 @@ describe "User can create a link", :type => :feature, :js => true do
     click_link_or_button "add-link"
 
     expect(current_path).to eq links_path
-    expect(Link.count).to eq 3
+    expect(Link.count).to eq 2
 
     within(".links") do
       expect(page).to have_content link2.title
